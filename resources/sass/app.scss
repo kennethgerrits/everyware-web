@@ -1,0 +1,123 @@
+// Fonts
+$fa-font-path: "../webfonts";
+@import url("https://fonts.googleapis.com/css?family=Nunito");
+
+// Variables (important to load before other scss files)
+@import "variables";
+
+// Bootstrap
+@import "~bootstrap/scss/bootstrap";
+
+// SCSS imports
+@import "buttons";
+@import "cards";
+@import "fontawesome";
+@import "utilities";
+@import "templates";
+@import "tables";
+@import "materials";
+@import "colorpicker";
+@import "wordlists";
+@import "menu";
+@import "input";
+
+//Fontawesome
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+@import "~@fortawesome/fontawesome-free/scss/solid";
+@import "~@fortawesome/fontawesome-free/scss/brands";
+@import "~@fortawesome/fontawesome-free/scss/regular";
+
+//General
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+//Header TODO remove from app.scss
+.nav-item-big {
+    font-size: 20px;
+    color: $white !important;
+}
+
+.nav-link-custom {
+    color: $white !important;
+
+    &:hover {
+        color: #ffffff;
+        background-color: #000000;
+    }
+}
+
+.nav-link-logout {
+    color: $white !important;
+    font-size: 20px;
+
+    &:hover {
+        color: $background-nav;
+        background-color: $app-red;
+    }
+}
+
+//CRUD - Index TODO remove from app.scss
+.table-top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 1.5em;
+    margin-top: 1.5em;
+}
+
+.custom-fa {
+    vertical-align: middle;
+}
+
+.home-bg {
+    //standard bg css
+    background-image: url("/images/home-bg.png");
+    height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    z-index: -1;
+}
+
+.align-block-center {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10%;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.select2 {
+    width: 100% !important;
+}
+
+.info-button {
+    border: none;
+    font-size: 10px;
+}
+
+.time-input {
+    display: inline-block;
+    max-width: 20%;
+}
+
+.alert-div {
+    max-width: 350px;
+}

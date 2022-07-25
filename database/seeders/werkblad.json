@@ -1,0 +1,20 @@
+{
+    "name": "Werkblad 1A",
+    "category" : "CategoryID",
+    "welcome_message": "Success met de vragen!",
+    "tags": [
+        {
+        "object": "taal1"
+    },
+        {
+            "object": "moeilijk"
+        }
+    ],
+    "question_type" : "static_image",
+    "answer_type" : "multiple_choice",
+    "question_amount" : "10",
+    "woordenlijst_id": "woordenlijst_id",
+    "reward" : "https://www.youtube.com/watch?v=LDU_Txk06tM"
+}
+
+

@@ -1,0 +1,766 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Huiswerk App API Documentation",
+        "description": "API documentation",
+        "contact": {
+            "email": "test@example.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8000/api",
+            "description": "Documentation page"
+        }
+    ],
+    "paths": {
+        "/categories": {
+            "get": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "Get all categories",
+                "description": "Returns all categories",
+                "operationId": "getAllCategories",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Category"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/categories/student/{id}": {
+            "get": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "Get all categories for a student",
+                "description": "Returns all categories for a student",
+                "operationId": "getStudentCategories",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Category"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/templates": {
+            "get": {
+                "tags": [
+                    "Templates"
+                ],
+                "summary": "Get list of templates",
+                "description": "Returns list of templates",
+                "operationId": "getAllTemplates",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Template"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/templates/{name}": {
+            "get": {
+                "tags": [
+                    "Templates"
+                ],
+                "summary": "Get list of templates by name",
+                "description": "Returns list of templates by name",
+                "operationId": "getTemplatesByName",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "path",
+                        "description": "Name of template",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Template"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/templates/student/{id}": {
+            "get": {
+                "tags": [
+                    "Templates"
+                ],
+                "summary": "Get list of templates by user ID",
+                "description": "Returns list of templates by user ID",
+                "operationId": "getTemplatesByStudentId",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "user ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Template"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Het opgegeven ID bestaat niet."
+                    }
+                }
+            }
+        },
+        "/templates/multiple/{ids}": {
+            "get": {
+                "tags": [
+                    "Templates"
+                ],
+                "summary": "Get list of templates by ids",
+                "description": "Returns list of templates by ids",
+                "operationId": "getTemplatesByIds",
+                "parameters": [
+                    {
+                        "name": "ids",
+                        "in": "path",
+                        "description": "imploded ids",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Template"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "De opgegeven IDS bestaan niet."
+                    }
+                }
+            }
+        },
+        "/templates/{category}": {
+            "get": {
+                "tags": [
+                    "Templates"
+                ],
+                "summary": "Get list of templates by category",
+                "description": "Returns list of templates by category",
+                "operationId": "getTemplatesByCategory",
+                "parameters": [
+                    {
+                        "name": "category",
+                        "in": "path",
+                        "description": "Category of template",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Template"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/login": {
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Login a single user",
+                "description": "Returns a single user",
+                "operationId": "login",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/LoginRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "De combinatie van email en wachtwoord is niet bij ons bekend."
+                    }
+                }
+            }
+        },
+        "/wordlists": {
+            "get": {
+                "tags": [
+                    "Wordlists"
+                ],
+                "summary": "Get all wordlists",
+                "description": "Returns all wordlists",
+                "operationId": "getWordlists",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Wordlist"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/wordlists/{ids}": {
+            "get": {
+                "tags": [
+                    "Wordlists"
+                ],
+                "summary": "Get wordlists by ids",
+                "description": "Returns wordlists by ids",
+                "operationId": "getWordlistsByIds",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Wordlist"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/wordlist/{id}": {
+            "get": {
+                "tags": [
+                    "Wordlists"
+                ],
+                "summary": "Get a wordlist by ID",
+                "description": "Returns a wordlist by ID",
+                "operationId": "getWordlistById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of wordlist",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Wordlist"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/worksheets": {
+            "post": {
+                "tags": [
+                    "Worksheets"
+                ],
+                "summary": "Post a single worksheet",
+                "description": "Post a single worksheet",
+                "operationId": "postWorksheet",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/WorksheetRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The worksheet is saved successfully!",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Category": {
+                "title": "Category",
+                "description": "Category model",
+                "properties": {
+                    "id": {
+                        "title": "ID",
+                        "description": "ID",
+                        "type": "string",
+                        "example": "607d4567f533031b2627a1e3"
+                    },
+                    "name": {
+                        "title": "Name",
+                        "description": "Name of category",
+                        "type": "string",
+                        "example": "Rekenen"
+                    },
+                    "color": {
+                        "title": "Color",
+                        "description": "Category color",
+                        "type": "string",
+                        "example": "#30a7bc"
+                    },
+                    "image": {
+                        "title": "Image",
+                        "description": "Category image",
+                        "type": "string",
+                        "example": "*base64image*"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Category"
+                }
+            },
+            "LoginRequest": {
+                "title": "Login Body",
+                "description": "Login request",
+                "required": [
+                    "email",
+                    "password"
+                ],
+                "properties": {
+                    "email": {
+                        "title": "Email",
+                        "description": "Email of an user",
+                        "type": "string",
+                        "example": "gerrit@krakeling.net"
+                    },
+                    "password": {
+                        "title": "Password",
+                        "description": "Password of an user",
+                        "type": "string",
+                        "example": "geheim"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Login Body"
+                }
+            },
+            "Template": {
+                "title": "Template",
+                "description": "Template model",
+                "properties": {
+                    "id": {
+                        "title": "ID",
+                        "description": "ID",
+                        "type": "string",
+                        "example": "607d4567f533031b2627a1e3"
+                    },
+                    "name": {
+                        "title": "Name",
+                        "description": "Name of a template",
+                        "type": "string",
+                        "example": "Werkblad 1A: Woorden"
+                    },
+                    "image": {
+                        "title": "Image",
+                        "description": "Image of a template",
+                        "type": "string",
+                        "format": "string",
+                        "example": "*Base64 image*"
+                    },
+                    "category": {
+                        "title": "Category",
+                        "description": "Category of a template",
+                        "type": "string",
+                        "example": "Werkblad 1A: Woorden"
+                    },
+                    "wordlist_id": {
+                        "title": "Wordlist ID",
+                        "description": "Wordlist ID of a template",
+                        "type": "string",
+                        "example": "607d4567f533031b2627a1e2"
+                    },
+                    "welcome_message": {
+                        "title": "Welcome message",
+                        "description": "Welcome message of a template",
+                        "type": "string",
+                        "example": "Je kunt beginnen!"
+                    },
+                    "question_type": {
+                        "title": "Question type",
+                        "description": "Question type of a template",
+                        "type": "string",
+                        "example": "STATIC_IMAGE"
+                    },
+                    "answer_type": {
+                        "title": "Answer type",
+                        "description": "Answer type of a template",
+                        "type": "string",
+                        "example": "WRITING"
+                    },
+                    "question_amount": {
+                        "title": "Question amount",
+                        "description": "Question amount of a template",
+                        "type": "integer",
+                        "example": 10
+                    },
+                    "min_amount": {
+                        "title": "Minimum amount",
+                        "description": "Minimum amount of a template",
+                        "type": "integer",
+                        "example": 0
+                    },
+                    "max_amount": {
+                        "title": "Maximum amount",
+                        "description": "Maximum amount of a template",
+                        "type": "integer",
+                        "example": 10
+                    },
+                    "sum_type": {
+                        "title": "Sum type",
+                        "description": "Sum type of a template",
+                        "type": "string",
+                        "example": "PLUS"
+                    },
+                    "reward": {
+                        "title": "Reward",
+                        "description": "Reward of a template",
+                        "type": "string",
+                        "example": "https://www.youtube.com/watch?v=d1YBv2mWll0"
+                    },
+                    "difficulties": {
+                        "title": "Difficulty",
+                        "description": "Difficulty of a template",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "example": [
+                            "1",
+                            "2"
+                        ]
+                    },
+                    "is_available": {
+                        "title": "Is available",
+                        "description": "Availibility of a template",
+                        "type": "boolean",
+                        "example": true
+                    },
+                    "is_math": {
+                        "title": "Is math",
+                        "description": "Template question type is math type",
+                        "type": "boolean",
+                        "example": true
+                    },
+                    "is_collection": {
+                        "title": "Is collection",
+                        "description": "Indicates if the template is a collection",
+                        "type": "boolean",
+                        "example": true
+                    },
+                    "is_new": {
+                        "title": "Is new",
+                        "description": "Indicates if the template is new",
+                        "type": "boolean",
+                        "example": true
+                    },
+                    "template_ids": {
+                        "title": "Template ids",
+                        "description": "All ids of the templates",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "example": [
+                            "1",
+                            "2"
+                        ]
+                    },
+                    "required_templates": {
+                        "title": "Required templates",
+                        "description": "List of template ids that are required to aqquire this template",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Template"
+                }
+            },
+            "User": {
+                "title": "User",
+                "description": "User model",
+                "properties": {
+                    "id": {
+                        "title": "ID",
+                        "description": "ID",
+                        "type": "string",
+                        "example": "607d4567f533031b2627a1e3"
+                    },
+                    "first_name": {
+                        "title": "First name",
+                        "description": "First name of an user",
+                        "type": "string",
+                        "example": "Gerrit"
+                    },
+                    "last_name": {
+                        "title": "Last name",
+                        "description": "Last name of an user",
+                        "type": "string",
+                        "example": "Krakeling"
+                    },
+                    "class_name": {
+                        "title": "Classgroup name",
+                        "description": "User classgroup",
+                        "type": "string",
+                        "example": "Klas 3/4a"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "User"
+                }
+            },
+            "Wordlist": {
+                "title": "Wordlist",
+                "description": "Wordlist Model",
+                "properties": {
+                    "id": {
+                        "title": "ID",
+                        "description": "ID",
+                        "type": "string",
+                        "example": "607d4567f533031b2627a1e3"
+                    },
+                    "words": {
+                        "title": "Words",
+                        "description": "List of words in a wordlist",
+                        "type": "array",
+                        "items": {
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "example": "Aap"
+                                },
+                                "url": {
+                                    "type": "string",
+                                    "example": "*Base64 app image*"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Wordlist"
+                }
+            },
+            "WorksheetRequest": {
+                "title": "Worksheet body",
+                "description": "Worksheet request",
+                "required": [
+                    "templateId",
+                    "studentId",
+                    "questionAmount",
+                    "successAmount",
+                    "startTime",
+                    "endTime",
+                    "questions"
+                ],
+                "properties": {
+                    "templateId": {
+                        "title": "Template ID",
+                        "description": "ID of a template",
+                        "type": "string",
+                        "example": "607d4567f533031b2627a1e3"
+                    },
+                    "studentId": {
+                        "title": "Student ID",
+                        "description": "ID of a student",
+                        "type": "string",
+                        "example": "607d4567f533031b2627a1e3"
+                    },
+                    "questionAmount": {
+                        "title": "Question amount",
+                        "description": "Question amount",
+                        "type": "integer",
+                        "example": 10
+                    },
+                    "successAmount": {
+                        "title": "Success amount",
+                        "description": "Success amount",
+                        "type": "integer",
+                        "example": 8
+                    },
+                    "startTime": {
+                        "title": "Start time",
+                        "description": "Start time",
+                        "type": "string",
+                        "format": "datetime",
+                        "example": "2021-04-19T09:00:47.000+00:00"
+                    },
+                    "endTime": {
+                        "title": "End time",
+                        "description": "End time",
+                        "type": "string",
+                        "format": "datetime",
+                        "example": "2021-04-19T09:04:40.000+00:00"
+                    },
+                    "questions": {
+                        "title": "Questions",
+                        "description": "List of words in a wordlist",
+                        "type": "array",
+                        "items": {
+                            "properties": {
+                                "answer": {
+                                    "properties": {
+                                        "correctAnswer": {
+                                            "type": "string",
+                                            "example": "auto"
+                                        },
+                                        "selectedAnswer": {
+                                            "type": "string",
+                                            "example": "auto"
+                                        },
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "base64Image": {
+                                            "type": "string",
+                                            "example": "*Base64 image of answer*"
+                                        },
+                                        "possibleAnswers": {
+                                            "type": "object",
+                                            "example": [
+                                                "auto",
+                                                "boom",
+                                                "appel",
+                                                "banaan"
+                                            ]
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "begin": {
+                                    "type": "integer",
+                                    "example": 124334234235
+                                },
+                                "end": {
+                                    "type": "integer",
+                                    "example": 124334234500
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Login Body"
+                }
+            }
+        },
+        "securitySchemes": {
+            "apiKey": {
+                "type": "apiKey",
+                "description": "Key for the user",
+                "name": "X-API-Key",
+                "in": "header"
+            }
+        }
+    },
+    "security": [
+        {
+            "apiKey": []
+        }
+    ]
+}

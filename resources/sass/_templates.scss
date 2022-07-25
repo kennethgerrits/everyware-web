@@ -1,0 +1,43 @@
+.preview-bottom{
+    border: 2px solid gray;
+    border-radius: 30%;
+    margin: 10%;
+    height: 80px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.div-preview{
+    display:none;
+}
+
+#wordlist-list{
+    overflow-y:scroll;
+    max-height: 50vh
+}
+
+.template-table .template-th, .template-table td{
+    text-align:center;
+}
+
+#live-preview {
+    img {
+        max-width: 200px;
+        height: auto;
+
+        &.js-preview-answer {
+            margin-top: 20px;
+        }
+    }
+}
+
+.preview-text{
+    font-size: 7vw;
+}
+
+.preview-image{
+    max-width: 30% !important;
+    height: auto !important;
+}

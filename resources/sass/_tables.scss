@@ -1,0 +1,10 @@
+.js-crud-table, .js-partial-table {
+    tbody{
+        tr{
+            cursor: pointer;
+            &:hover{
+                background-color: $table-hover;
+            }
+        }
+    }
+}

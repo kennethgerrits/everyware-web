@@ -1,0 +1,13 @@
+.materials-bg{
+    //standard bg css
+    background-image: url("/images/materials-bg.png");
+    height: 100vh;
+    background-size:cover;
+    background-repeat: no-repeat;
+
+    position: fixed;
+    top:0;
+    left:0;
+    width: 100vw; 
+    z-index: -1; /* Ensure div tag stays behind content; -999 might work, too. */
+}

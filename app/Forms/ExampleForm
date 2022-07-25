@@ -1,0 +1,28 @@
+<?php
+
+namespace App\Forms;
+
+use App\Models\Classroom;
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\FormBuilderInterface;
+
+class ExampleForm extends AbstractType
+{
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
+        $data = $options['data'];
+        $builder
+            ->add('name', TextType::class, [
+                'label' => 'Naam'
+            ])
+            ->add('classroom_id', ChoiceType::class, [
+                'label' => 'Klas',
+                'placeholder' => "Selecteren..",
+                'choices' => Classroom::pluck('_id', 'name'),
+            ]);
+    }
+}

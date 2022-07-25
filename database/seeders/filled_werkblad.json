@@ -1,0 +1,27 @@
+{
+    "werkblad_id" : "werkbladId",
+    "student_id": "studentId",
+    "tags": [
+        {
+        "object": "taal1"
+    },
+        {
+            "object": "moeilijk"
+        }
+    ],
+    "question_type" : "static_image",
+    "answer_type" : "multiple_choice",
+    "question_amount" : "10",
+    "success_amount" : "7",
+    "questions": [
+        {
+            "object": {
+                "image": "image_string",
+                "answer" : "boon",
+                "success" : true
+            }
+        }
+    ]
+}
+
+
